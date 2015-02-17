@@ -1,0 +1,226 @@
+Feb 10, 2015 5:14:37 PM Uded main
+INFO: My first log
+Feb 10, 2015 5:14:37 PM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 11, 2015 7:06:04 PM Uded main
+INFO: My first log
+Feb 11, 2015 7:06:04 PM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 11, 2015 7:06:33 PM Uded main
+INFO: My first log
+Feb 11, 2015 7:06:33 PM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 11, 2015 7:09:09 PM Uded main
+INFO: My first log
+Feb 11, 2015 7:09:09 PM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 11, 2015 7:11:43 PM Uded main
+INFO: My first log
+Feb 11, 2015 7:11:43 PM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 11, 2015 7:13:37 PM Uded main
+INFO: My first log
+Feb 11, 2015 7:13:37 PM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 12, 2015 6:08:31 PM Uded main
+INFO: My first log
+Feb 12, 2015 6:08:31 PM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 12, 2015 6:08:33 PM Uded performCheck
+SEVERE: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1121)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:357)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2479)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2516)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2301)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:346)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at Uded.performCheck(Uded.java:186)
+	at Uded.main(Uded.java:272)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:259)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:307)
+	... 16 more
+
+Feb 12, 2015 6:08:48 PM Uded performCheck
+SEVERE: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1121)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:357)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2479)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2516)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2301)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:346)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at Uded.performCheck(Uded.java:186)
+	at Uded.main(Uded.java:272)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:259)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:307)
+	... 16 more
+
+Feb 12, 2015 6:09:27 PM Uded performCheck
+SEVERE: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1121)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:357)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2479)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2516)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2301)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:346)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at Uded.performCheck(Uded.java:186)
+	at Uded.main(Uded.java:272)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:259)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:307)
+	... 16 more
+
+Feb 12, 2015 6:09:51 PM Uded main
+INFO: My first log
+Feb 12, 2015 6:09:51 PM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 12, 2015 6:10:14 PM Uded main
+INFO: My first log
+Feb 12, 2015 6:10:14 PM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 12, 2015 6:11:58 PM Uded main
+INFO: My first log
+Feb 12, 2015 6:11:58 PM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 13, 2015 10:17:26 AM Uded main
+INFO: My first log
+Feb 13, 2015 10:17:26 AM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 13, 2015 10:21:30 AM Uded main
+INFO: My first log
+Feb 13, 2015 10:21:30 AM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 13, 2015 10:22:33 AM Uded main
+INFO: My first log
+Feb 13, 2015 10:22:33 AM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 13, 2015 10:23:18 AM Uded main
+INFO: My first log
+Feb 13, 2015 10:23:18 AM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 13, 2015 10:23:56 AM Uded main
+INFO: My first log
+Feb 13, 2015 10:23:57 AM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 13, 2015 10:25:27 AM Uded main
+INFO: My first log
+Feb 13, 2015 10:25:27 AM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 13, 2015 10:29:02 AM Uded main
+INFO: My first log
+Feb 13, 2015 10:29:02 AM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 13, 2015 10:29:33 AM Uded main
+INFO: My first log
+Feb 13, 2015 10:29:33 AM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 13, 2015 10:34:45 AM Uded main
+INFO: My first log
+Feb 13, 2015 10:34:45 AM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 13, 2015 10:34:54 AM Uded main
+INFO: My first log
+Feb 13, 2015 10:34:54 AM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 13, 2015 10:37:10 AM Uded main
+INFO: My first log
+Feb 13, 2015 10:37:11 AM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////
+Feb 13, 2015 5:03:18 PM Uded main
+INFO: My first log
+Feb 13, 2015 5:03:18 PM Uded main
+INFO: //////////// Unusual Database Event Detection (uded) server started /////////////

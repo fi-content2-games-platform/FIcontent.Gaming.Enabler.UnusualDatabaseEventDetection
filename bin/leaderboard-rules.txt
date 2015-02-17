@@ -1,0 +1,8 @@
+max(game1 highscore)
+SELECT MAX(highscore) FROM mygame.game1
+0
+1900
+min(game1 highscore)
+SELECT MIN(highscore) FROM mygame.game1
+0
+1900
