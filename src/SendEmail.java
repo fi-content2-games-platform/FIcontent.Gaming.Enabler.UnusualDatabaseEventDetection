@@ -1,3 +1,8 @@
+/*
+Sends an email using a gmail address.
+Gmail may have to be configured to allow sending such emails.
+ */
+
 // mostly from stackoverflow and http://www.tutorialspoint.com/java/java_sending_email.htm
 
 import java.io.UnsupportedEncodingException;
@@ -11,6 +16,11 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
+/** Sends an email using a gmail address.
+
+Gmail may have to be configured to allow sending such emails.
+ */
 
 public class SendEmail {
 	private SendEmail() {

@@ -1,28 +1,10 @@
-// Unusual Database Event Detection (Uded) server with email alerts
-// ((( rest api, supporting json or jsonp ?? )))
+/** \mainpage Unusual Database Event Detection (Uded).
 
-/***********************************************************************
-
-most simple approach
----------------------
-in specified intervals:
-  for each specified value:
-    execute sql query
-    send email if no connection or value outside range
-
-configuration:
-- time interval
-- email address
-- server settings
-
-configuration entry format:
-- string: value description
-- string: mysql query --> returns a value (for now: single value!)
-
-***********************************************************************/
+The Unusual Database Event Detection (Uded) is a server monitoring software with email alerts.
+*/
 
 /*
-
+further ideas
 
 initialization (slow to not overload server):
 - collect stats from existing data
@@ -114,8 +96,30 @@ import org.apache.commons.codec.binary.Base64;
 import java.util.Arrays;
 */
 
+/** The Unusual Database Event Detection (Uded) is a server monitoring software with email alerts.
+
+In specified intervals, for each specified value in a rule file:
+- execute sql query to retrieve a number
+- send email if no connection or resulting value outside range
+
+The rule file is a text format with 4 lines per entry:
+- description
+- query string (e.g. a MySQL command returning a number)
+- minimum allowed result value
+- maximum allowed result value
+
+Config entries in key = value format:
+- key: string, value description
+- value: string, mysql query --> returns a value (for now: single value!)
+it contains settings such as:
+- time interval
+- email address
+- server settings
+
+*/
+
 public class Uded {
-	public static final boolean DEBUG = true;
+	public static final boolean DEBUG = true; // for verbose debug messages
 
 	static ServerSettings settings;
 	static String configFileName = "config.properties";
@@ -128,6 +132,7 @@ public class Uded {
 
 	///////////////////////////////////////////////////////////////////////////////////////
 
+	/** Convert string to integer. In case this fails, the defaultValue is used. */
 	public static int toIntDef(String v, int defaultValue) {
 		int result = defaultValue;
 		try {
@@ -137,6 +142,7 @@ public class Uded {
 		return result;
 	}
 
+	/** Convert string to boolean. In case this fails, the defaultValue is used. */
 	public static boolean toBoolDef(String v, boolean defaultValue) {
 		boolean result = defaultValue;
 		try {
@@ -146,7 +152,8 @@ public class Uded {
 		return result;
 	}
 
-	public static String toSafeString(String s, int maxLength) { // this should return a string that is safe to use in sql inputs, preventing sql injection
+	/** This should process and return a string that is safe to use in sql inputs, preventing sql injection. */
+	public static String toSafeString(String s, int maxLength) {
 		if (s == null) return null;
 
 		try {
@@ -170,6 +177,7 @@ public class Uded {
 		return res.toString();
 	}
 
+	/** Perform the check of each entry. */
 	public static void performCheck() {
 		if (DEBUG) System.out.println("### starting check");
 		String alertMessage = "";
@@ -229,6 +237,7 @@ public class Uded {
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
+	/** Main loop: read config file and rules file, execute checks in regular intervals. */
 	public static void main(String[] args) {
 		settings = new ServerSettings(configFileName);
 		///////////////////

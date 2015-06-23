@@ -1,3 +1,5 @@
+// Database access for MySQL
+
 // mysql
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,6 +12,8 @@ import java.sql.Blob;
 
 // logging
 import java.util.logging.Level;
+
+/** Database access for MySQL */
 
 public class DatabaseQueryMySQL extends DatabaseQuery {
 	String address;

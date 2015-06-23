@@ -1,11 +1,10 @@
-// configuration file
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
+/* Read settings from configuration file. */
 
+/**
+ \page ExampleConfigFile
+ Example config file.
 
-/***************** example configuration file *************************
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # escape the characters #, !, =, and : with a preceding backslash
 
 # (local) address of database
@@ -21,8 +20,14 @@ logfile = log.txt
 # optional: social network url and database name
 #socialnetwork = http\://couchdb.simple-url.com\:5984/pixelpark/
 
-***********************************************************************/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+/** Read settings from configuration file. */
 
 class ServerSettings {
 	final String url; // of mysql database, e.g. jdbc:mysql://localhost:3306/mygame

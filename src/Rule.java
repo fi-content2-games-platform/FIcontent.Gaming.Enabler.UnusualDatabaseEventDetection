@@ -1,10 +1,40 @@
+// A rule is a mySQL query string that should return a number, a range of expected values and a brief description.
+
+/** \page ExampleRulesFile
+ Example rules file.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+max(ARTreasureHunt totalTime)
+SELECT MAX(totalTime) FROM mygame.ARTreasureHunt
+2000
+10000
+min(augmentedresistance totalTime)
+SELECT MIN(totalTime) FROM mygame.ARTreasureHunt
+2000
+10000
+max(ARTreasureHunt puzzleTime)
+SELECT MAX(puzzleTime) FROM mygame.ARTreasureHunt
+200
+2000
+min(augmentedresistance puzzleTime)
+SELECT MIN(puzzleTime) FROM mygame.ARTreasureHunt
+200
+2000
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
 import java.util.Vector;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-class Rule {
+/**
+A rule is a mySQL query string that should return a number, a range of expected values and a brief description.
+Rules are declared in a text file.
+ */
+
+public class Rule {
 	public String description;
 	public String mysqlQuery;
 	public float minValue;
