@@ -1,8 +1,40 @@
-max(game1 highscore)
-SELECT MAX(highscore) FROM mygame.game1
+max(augmentedresistance highscore)
+SELECT MAX(highscore) FROM mygame.augmentedresistance
 0
-1900
-min(game1 highscore)
-SELECT MIN(highscore) FROM mygame.game1
+90000
+min(augmentedresistance highscore)
+SELECT MIN(highscore) FROM mygame.augmentedresistance
 0
-1900
+90000
+max(gnometrader highscore)
+SELECT MAX(highscore) FROM mygame.gnometrader
+0
+10000
+min(gnometrader highscore)
+SELECT MIN(highscore) FROM mygame.gnometrader
+0
+10000
+max(ARTreasureHunt totalTime)
+SELECT MAX(totalTime) FROM mygame.ARTreasureHunt
+2000
+10000
+min(augmentedresistance totalTime)
+SELECT MIN(totalTime) FROM mygame.ARTreasureHunt
+2000
+10000
+max(ARTreasureHunt puzzleTime)
+SELECT MAX(puzzleTime) FROM mygame.ARTreasureHunt
+200
+2000
+min(augmentedresistance puzzleTime)
+SELECT MIN(puzzleTime) FROM mygame.ARTreasureHunt
+200
+2000
+max(ARTreasureHunt distance)
+SELECT MAX(distance) FROM mygame.ARTreasureHunt
+1000
+10000
+min(augmentedresistance distance)
+SELECT MIN(distance) FROM mygame.ARTreasureHunt
+1000
+10000
