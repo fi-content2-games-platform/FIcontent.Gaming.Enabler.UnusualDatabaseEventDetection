@@ -12,6 +12,7 @@ Unusual Database-Event Detection SE
 ### Edit Configuration
 - edit the `bin/config.properties` file (see comments in the example file)
 - create a rules file or modify the `bin/leaderboard-rules.txt` example
+
 This is a small rules file with only two rules:
 ```
 max(augmentedresistance highscore)
