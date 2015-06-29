@@ -60,11 +60,11 @@ configuration
 import java.io.IOException;
 import java.util.Vector;
 
-/*
-// rest server
+
+// web server
 import static spark.Spark.*;
 import spark.*;
-*/
+
 
 // logging
 import java.util.logging.FileHandler;
@@ -192,6 +192,10 @@ public class Uded {
 			for (Rule rule : rules) { // for all checked values
 				if (DEBUG) System.out.print(rule.mysqlQuery + " --> ");
 				float v = db.getValue(rule.mysqlQuery);
+
+				HistoryBufferEntry h = new HistoryBufferEntry();
+				h.v = v;
+
 				if (!Float.isNaN(v)) {
 					if (DEBUG) System.out.println("result value: " + v + "  (should be within " + rule.minValue + ".." + rule.maxValue + ")");
 
@@ -199,13 +203,16 @@ public class Uded {
 					// unusual value or state, send notification by email
 					boolean previousCheck = rule.lastCheckAlert;
 					rule.lastCheckAlert = false;
+					h.isInRange = true;
 					if (v < rule.minValue) {
 						alertMessage += (rule.description + " --> " + v + "   triggered alert\n  " + rule.mysqlQuery);
 						rule.lastCheckAlert = true;
+						h.isInRange = false;
 					}
 					if (v > rule.maxValue) {
 						alertMessage += (rule.description + " --> " + v + "   triggered alert\n  " + rule.mysqlQuery);
 						rule.lastCheckAlert = true;
+						h.isInRange = false;
 					}
 					if (rule.lastCheckAlert != previousCheck) alertsHaveChanged = true;
 				} else {
@@ -214,6 +221,8 @@ public class Uded {
 					alertMessage += "Connection to database failed.\n";
 					dbProblem = true;
 				}
+
+				rule.histBuff.add(h);
 			}
 
 			if (alertMessage.length() == 0) {
@@ -271,22 +280,24 @@ public class Uded {
 
 		db = new DatabaseQueryMySQL(settings.url, settings.user, settings.password);
 
-/*
-		// for browser (FireFox) cross origin resource sharing (CORS) to confirm that PUT and DELETE work, too
-		options(new Route("/lb/:gameID") {
-		  @Override
-		  public Object handle(Request request, Response response) {
-			if (DEBUG) System.out.println("OPTIONS");
-			response.header("Access-Control-Allow-Origin", "*");
-			response.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-			response.header("Access-Control-Allow-Headers", "X-Requested-With");
-			response.header("Access-Control-Max-Age", "100");
-			response.status(204);
-			return ("");
-		  }
-		});
-*/
+		/////////////////////////////////
+		get(new Route("/") {
+			@Override
+			public Object handle(Request request, Response response) {
+				StringBuilder result = new StringBuilder(40);
+				result.append("<!DOCTYPE html>\n<html><body>\n<h1>Unusual Database-Event Detection SE - Monitor</h1>\n");
+				for (Rule rule : rules) {
+					result.append(rule.statusHTML());
+				}
+				result.append("</body></html>");
 
+				response.status(200); // 200 ok
+				return result.toString();
+			}
+		});
+		/////////////////////////////////
+
+		// main loop
 		while (true) {
 			// check db state
 			performCheck();
