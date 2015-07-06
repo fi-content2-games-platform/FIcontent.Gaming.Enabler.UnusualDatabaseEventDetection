@@ -46,7 +46,7 @@ public class DatabaseQueryMySQL extends DatabaseQuery {
 	public float getValue(String queryString) {
 		try {
 			st = con.createStatement();
-			//String qustr = "SELECT MAX(highscore) FROM mygame.game1"; // AVG MIN MAX SUM, COUNT (anzahl der Einträge)
+			//String qustr = "SELECT MAX(highscore) FROM mygame.game1"; // AVG MIN MAX SUM, COUNT (number of entries)
 			rs = st.executeQuery(queryString);
 			ResultSetMetaData rsmd = rs.getMetaData();
 			if (rs.next()) { // only first position
