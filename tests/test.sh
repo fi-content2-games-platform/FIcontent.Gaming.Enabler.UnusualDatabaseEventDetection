@@ -10,7 +10,10 @@ echo "Entering FIC2Lab smoke test sequence. Vendor's validation procedure of the
 
 # wait for service
 echo -n "Waiting service to launch"
-while ! (netcat -vz localhost $2 &> /dev/null); do echo -n "."; sleep 5; done
+if ! timeout -s KILL 60s /bin/bash -c "until netcat -vz $1 $2 &> /dev/null; do echo -n '.';  sleep 5s; done; "; then
+    echo "Uded wasn't ready"
+    exit 137
+fi
 echo ""
 echo "service is running."
 

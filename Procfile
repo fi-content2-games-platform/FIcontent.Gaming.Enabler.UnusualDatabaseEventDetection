@@ -1,1 +1,0 @@
-uded: /root/etc/uded-entrypoint.sh
