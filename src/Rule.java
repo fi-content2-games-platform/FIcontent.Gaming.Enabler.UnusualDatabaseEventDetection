@@ -109,11 +109,10 @@ public class Rule {
 		result.append("<text x=\""+(x0-8)+"\" y=\""+yMax+"\" font-size=\"16px\" text-anchor=\"end\" dominant-baseline=\"middle\">"+maxValue+"</text>");
 		result.append("<line x1=\""+(x0-5)+"\" y1=\""+yMax+"\" x2=\""+statusHTMLWidth+"\" y2=\""+yMax+"\" style=\"stroke:#002266;\"/>");
 
-		float xw = (statusHTMLWidth-x0)/(float) histBuff.linkedlist.size();
+		float xw = (statusHTMLWidth-x0-5)/(float) histBuff.linkedlist.size();
 
 		float xPos = x0;
 		for (HistoryBufferEntry h : Reversed.reversed(histBuff.linkedlist)) {
-			//result.append((!Float.isNaN(h.v) ? h.v : "-") + ", ");
 			if (!Float.isNaN(h.v)) {
 				// value exists/could be read
 				float y1 = convertY(0, yMin, yMax);
@@ -121,7 +120,7 @@ public class Rule {
 				result.append("<rect x=\""+xPos+"\" y=\""+y2+"\" width=\""+(0.9*xw)+"\" height=\""+(y1-y2)+"\" style=\""+ (h.isInRange?"fill:rgb(100,255,120);stroke:rgb(0,255,0);stroke-width:1px":"fill:rgb(255,150,100);stroke:rgb(255,0,0);stroke-width:1px") +"\" />");
 			} else {
 				// error
-				result.append("<rect x=\""+xPos+"\" y=\"2\" width=\"0.9\" height=\""+statusHTMLHeight+"\" style=\"fill:rgb(255,100,100);stroke-width:1px\" />");
+				result.append("<rect x=\""+xPos+"\" y=\"2\" width=\""+(0.9*xw)+"\" height=\""+statusHTMLHeight+"\" style=\"fill:rgb(255,100,100);stroke-width:1px\" />");
 			}
 			xPos+=xw;
 		}

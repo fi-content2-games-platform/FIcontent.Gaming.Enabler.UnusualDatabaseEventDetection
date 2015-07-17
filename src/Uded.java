@@ -187,52 +187,54 @@ public class Uded {
 
 		if (db.connect()) {
 			if (DEBUG) System.out.println("connected to database");
-
-			// read values from database
-			for (Rule rule : rules) { // for all checked values
-				if (DEBUG) System.out.print(rule.mysqlQuery + " --> ");
-				float v = db.getValue(rule.mysqlQuery);
-
-				HistoryBufferEntry h = new HistoryBufferEntry();
-				h.v = v;
-
-				if (!Float.isNaN(v)) {
-					if (DEBUG) System.out.println("result value: " + v + "  (should be within " + rule.minValue + ".." + rule.maxValue + ")");
-
-					// check value for anomalies
-					// unusual value or state, send notification by email
-					boolean previousCheck = rule.lastCheckAlert;
-					rule.lastCheckAlert = false;
-					h.isInRange = true;
-					if (v < rule.minValue) {
-						alertMessage += (rule.description + " --> " + v + "   triggered alert\n  " + rule.mysqlQuery);
-						rule.lastCheckAlert = true;
-						h.isInRange = false;
-					}
-					if (v > rule.maxValue) {
-						alertMessage += (rule.description + " --> " + v + "   triggered alert\n  " + rule.mysqlQuery);
-						rule.lastCheckAlert = true;
-						h.isInRange = false;
-					}
-					if (rule.lastCheckAlert != previousCheck) alertsHaveChanged = true;
-				} else {
-					// problem getting value
-					if (DEBUG) System.out.println("reading value from database failed");
-					alertMessage += "Connection to database failed.\n";
-					dbProblem = true;
-				}
-
-				rule.histBuff.add(h);
-			}
-
-			if (alertMessage.length() == 0) {
-				alertMessage = "all back to normal";
-			}
-
 		} else {
 			if (DEBUG) System.out.println("Connection to database failed");
+			dbProblem = true;
 			alertMessage += "Connection to database failed.\n";
 		}
+
+		// read values from database
+		for (Rule rule : rules) { // for all checked values
+			if (DEBUG) System.out.print(rule.mysqlQuery + " --> ");
+			float v = Float.NaN;
+			if (!dbProblem) v = db.getValue(rule.mysqlQuery);
+
+			HistoryBufferEntry h = new HistoryBufferEntry();
+			h.v = v;
+
+			if (!Float.isNaN(v)) {
+				if (DEBUG) System.out.println("result value: " + v + "  (should be within " + rule.minValue + ".." + rule.maxValue + ")");
+
+				// check value for anomalies
+				// unusual value or state, send notification by email
+				boolean previousCheck = rule.lastCheckAlert;
+				rule.lastCheckAlert = false;
+				h.isInRange = true;
+				if (v < rule.minValue) {
+					alertMessage += (rule.description + " --> " + v + "   triggered alert\n  " + rule.mysqlQuery);
+					rule.lastCheckAlert = true;
+					h.isInRange = false;
+				}
+				if (v > rule.maxValue) {
+					alertMessage += (rule.description + " --> " + v + "   triggered alert\n  " + rule.mysqlQuery);
+					rule.lastCheckAlert = true;
+					h.isInRange = false;
+				}
+				if (rule.lastCheckAlert != previousCheck) alertsHaveChanged = true;
+			} else {
+				// problem getting value
+				if (DEBUG) System.out.println("reading value from database failed");
+				alertMessage += "Connection to database failed.\n";
+				dbProblem = true;
+			}
+
+			rule.histBuff.add(h);
+		}
+
+		if (alertMessage.length() == 0) {
+			alertMessage = "all back to normal";
+		}
+
 		if (!db.close()) dbProblem = true;
 
 		if (dbProblem != lastCheckDbProblem) alertsHaveChanged = true;
@@ -286,6 +288,20 @@ public class Uded {
 			public Object handle(Request request, Response response) {
 				StringBuilder result = new StringBuilder(40);
 				result.append("<!DOCTYPE html>\n<html><body>\n<h1>Unusual Database-Event Detection SE - Monitor</h1>\n");
+
+				// nice text output of duration
+				String intervalString;
+				if (settings.interval < 180) { // if less than 3 minutes
+					intervalString = (settings.interval) + " seconds";
+				} else {
+					if (settings.interval/60 < 180) { // if less than 3 hours
+						intervalString = (settings.interval/60) + " minutes";
+					} else {
+						intervalString = (settings.interval/3600) + " hours";
+					}
+				}
+
+				result.append("<p>Each bar below represents about " + intervalString + ".</p>");
 				for (Rule rule : rules) {
 					result.append(rule.statusHTML());
 				}
