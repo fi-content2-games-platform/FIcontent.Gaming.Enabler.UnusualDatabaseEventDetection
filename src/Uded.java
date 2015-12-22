@@ -240,7 +240,7 @@ public class Uded {
 		if (dbProblem != lastCheckDbProblem) alertsHaveChanged = true;
 
 		if (alertsHaveChanged) {
-			SendEmail.send(settings.emailSender, settings.emailPassword, "marcel.lancelle@inf.ethz.ch", "uded alert", alertMessage);
+			SendEmail.send(settings.emailSender, settings.emailPassword, settings.emailReceiver, "uded alert", alertMessage);
 		}
 
 		if (DEBUG) System.out.println("### end check");
