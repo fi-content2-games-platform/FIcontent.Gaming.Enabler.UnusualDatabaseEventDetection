@@ -39,6 +39,7 @@ class ServerSettings {
 
 	final String emailSender;
 	final String emailPassword;
+	final String emailReceiver;
 
 	final String ruleFileName;
 
