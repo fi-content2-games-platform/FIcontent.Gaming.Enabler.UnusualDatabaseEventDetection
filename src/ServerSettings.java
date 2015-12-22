@@ -61,6 +61,7 @@ class ServerSettings {
 		emailSender = prop.getProperty("emailSender");
 		emailPassword = prop.getProperty("emailPassword");
 		ruleFileName = prop.getProperty("ruleFileName");
+		emailReceiver = prop.getProperty("emailReceiver");
 
 		if (Uded.DEBUG) {
 			System.out.println("read these config values:");
